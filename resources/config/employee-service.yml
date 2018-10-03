@@ -1,0 +1,15 @@
+server:
+  port: 0
+  #port: ${random.int[5000,5005]}
+  
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8061/eureka/
+  instance:
+     #instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+     instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${random.value}
+      
+logging:
+  pattern: 
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
